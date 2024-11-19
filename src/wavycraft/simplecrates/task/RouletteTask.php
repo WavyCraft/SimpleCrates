@@ -7,7 +7,6 @@ namespace wavycraft\simplecrates\task;
 use pocketmine\Server;
 
 use pocketmine\block\VanillaBlocks;
-use pocketmine\block\utils\DyeColor;
 
 use pocketmine\network\mcpe\NetworkBroadcastUtils;
 use pocketmine\network\mcpe\protocol\AddActorPacket;
