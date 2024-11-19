@@ -43,9 +43,9 @@ class KeyCommand extends Command {
         $amount = isset($args[2]) && is_numeric($args[2]) ? max(1, (int)$args[2]) : 1;
         KeyManager::getInstance()->giveCrateKey($targetPlayer, $crateType, $amount);
 
-        $sender->sendMessage("§l§f(§a!§f)§r§f Given §a" . $amount . ucfirst($crateType) . " crate keys§f to §e" . $targetPlayer->getName() . "§f!");
+        $sender->sendMessage("§l§f(§a!§f)§r§f Given §a" . number_format($amount) . " " . ucfirst($crateType) . " crate keys§f to §e" . $targetPlayer->getName() . "§f!");
 
-        $targetPlayer->sendMessage("§l§f(§a!§f)§r§f You have been given §a" . $amount . ucfirst($crateType) . " crate keys §fby §e" . $sender->getName() . "§f!");
+        $targetPlayer->sendMessage("§l§f(§a!§f)§r§f You have been given §a" . number_format($amount) . " " . ucfirst($crateType) . " crate keys §fby §e" . $sender->getName() . "§f!");
         return true;
     }
 }
