@@ -60,7 +60,7 @@ class RouletteTask extends Task {
         $this->crateType = $crateType;
         $this->cratePosition = $cratePosition;
         $this->menu = InvMenu::create(InvMenuTypeIds::TYPE_CHEST);
-        $this->menu->setName("Opening a " . ucfirst($crateType) . " Crate");
+        $this->menu->setName("Opening a " . ucfirst($crateType) . " Crate...");
         $this->menu->getInventory()->setContents([
             0 => ($vine = VanillaBlocks::VINES()->asItem()->setCustomName(TextFormat::ITALIC)),
             1 => $vine,
