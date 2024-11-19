@@ -23,7 +23,7 @@ class KeyCommand extends Command {
         $this->setPermission("simplecrates.key");
     }
 
-    public function execute(CommandSender $sender, string $label, array $args) : bool{
+    public function execute(CommandSender $sender, string $label, array $args): bool {
         if (!$this->testPermission($sender)) {
             return false;
         }
@@ -34,17 +34,20 @@ class KeyCommand extends Command {
             return false;
         }
 
-        $crateType = $args[1];
+        $crateType = $args[1] ?? null;
         if ($crateType === null) {
             $sender->sendMessage("§l§f(§4!§f)§r§f Please specify a crate type!");
             return false;
         }
 
         $amount = isset($args[2]) && is_numeric($args[2]) ? max(1, (int)$args[2]) : 1;
-        KeyManager::getInstance()->giveCrateKey($targetPlayer, $crateType, $amount);
+
+        if (!KeyManager::getInstance()->giveCrateKey($targetPlayer, $crateType, $amount)) {
+            $sender->sendMessage("§l§f(§4!§f)§r§f Invalid crate type:§e " . $crateType);
+            return false;
+        }
 
         $sender->sendMessage("§l§f(§a!§f)§r§f Given §a" . number_format($amount) . " " . ucfirst($crateType) . " crate keys§f to §e" . $targetPlayer->getName() . "§f!");
-
         $targetPlayer->sendMessage("§l§f(§a!§f)§r§f You have been given §a" . number_format($amount) . " " . ucfirst($crateType) . " crate keys §fby §e" . $sender->getName() . "§f!");
         return true;
     }
