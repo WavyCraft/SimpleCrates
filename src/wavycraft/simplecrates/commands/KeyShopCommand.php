@@ -103,12 +103,12 @@ class KeyShopCommand extends Command {
 
             $moneyManager->removeMoney($player, $totalCost);
             KeyManager::getInstance()->giveCrateKey($player, $crateType, $amount);
-            $player->sendMessage(TextColor::GREEN . "You have purchased " . number_format($amount) . ucfirst($crateType) . " keys for $" . number_format($totalCost) . "!");
+            $player->sendMessage(TextColor::GREEN . "You have purchased " . number_format($amount) . " " . ucfirst($crateType) . " keys for $" . number_format($totalCost) . "!");
         });
 
         $balance = (int) MoneyManager::getInstance()->getBalance($player);
         $form->setTitle(TextColor::BOLD . TextColor::UNDERLINE . "Buy Key");
-        $form->addLabel("Enter the amount of keys you want to buy for crate: " . ucfirst($crateType) . TextColor::EOL . TextColor::EOL . "Price per key: " . TextColor::GREEN . "$" . number_format($pricePerKey) . TextColor::EOL . TextColor::EOL . "Current balance: " . TextColor::YELLOW . "$" . number_format($balance));
+        $form->addLabel("Enter the amount of keys you want to buy for crate: " . ucfirst($crateType) . TextColor::EOL . TextColor::EOL . "Price per key: " . TextColor::GREEN . "$" . number_format($pricePerKey) . TextColor::EOL . TextColor::EOL . TextColor::WHITE . "Current balance: " . TextColor::YELLOW . "$" . number_format($balance));
         $form->addInput("Amount:", "enter a positive number...");
         $player->sendForm($form);
     }
