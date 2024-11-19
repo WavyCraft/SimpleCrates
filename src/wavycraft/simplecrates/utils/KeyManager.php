@@ -22,7 +22,7 @@ use wavycraft\simplecrates\Loader;
 final class KeyManager {
     use SingletonTrait;
 
-    public function getCrateKeyItem(string $crateType): ?Item {
+    public function getCrateKeyItem(string $crateType) : ?Item{
         $config = Loader::getInstance()->getConfig();
         $crateConfig = $config->get("crates", []);
 
@@ -46,27 +46,27 @@ final class KeyManager {
         return $item;
     }
 
-    public function giveCrateKey(Player $player, string $crateType, int $amount = 1): void {
+    public function giveCrateKey(Player $player, string $crateType, int $amount = 1) : bool{
         $crateKey = $this->getCrateKeyItem($crateType);
         if ($crateKey === null) {
-            $player->sendMessage("§l§f(§4!§f)§r§f Invalid crate type '$crateType'!");
-            return;
+            return false;
         }
 
         $crateKey->setCount($amount);
         $player->getInventory()->addItem($crateKey);
+        return true;
     }
 
-    public function giveCrateKeyAll(string $crateType, int $amount = 1): void {
+    public function giveCrateKeyAll(string $crateType, int $amount = 1) : bool{
         $crateKey = $this->getCrateKeyItem($crateType);
         if ($crateKey === null) {
-            Server::getInstance()->broadcastMessage("§l§f(§4!§f)§r§f Invalid crate type '$crateType'!");
-            return;
+            return false;
         }
 
         $crateKey->setCount($amount);
         foreach (Server::getInstance()->getOnlinePlayers() as $p) {
             $p->getInventory()->addItem($crateKey);
         }
+        return true;
     }
 }
