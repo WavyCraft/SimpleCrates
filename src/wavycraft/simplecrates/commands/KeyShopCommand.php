@@ -65,13 +65,13 @@ class KeyShopCommand extends Command {
             $this->openBuyAmountForm($player, $selectedCrateType);
         });
 
-        $form->setTitle("§lCrate Key Shop");
+        $form->setTitle(TextColor::BOLD . "Crate Key Shop");
         $form->setContent("Select a crate key to purchase:");
 
         foreach ($crateConfig as $crateType => $crateData) {
             $keyName = $crateData["key_name"] ?? $crateType;
             $price = $crateData["price"];
-            $form->addButton("{ucfirst($keyName)}\n§r§8Price: $" . number_format($price));
+            $form->addButton($keyName . TextColor::EOL . TextColor::RESET . TextColor::DARK_GRAY . "Price: " . TextColor::GREEN . "$" . number_format($price));
         }
 
         $player->sendForm($form);
@@ -106,8 +106,9 @@ class KeyShopCommand extends Command {
             $player->sendMessage(TextColor::GREEN . "You have purchased " . number_format($amount) . ucfirst($crateType) . " keys for $" . number_format($totalCost) . "!");
         });
 
-        $form->setTitle("§lBuy Key");
-        $form->addLabel("Enter the amount of keys you want to buy for crate: " . ucfirst($crateType) . "\n§c \n§r§fPrice per key: $" . number_format($pricePerKey));
+        $balance = (int)$moneyManager->getBalance($player);
+        $form->setTitle(TextColor::BOLD . "Buy Key");
+        $form->addLabel("Enter the amount of keys you want to buy for crate: " . ucfirst($crateType) . TextColor::EOL . TextColor::EOL . "Price per key: §a$" . number_format($pricePerKey) . TextColor::EOL . TextColor::EOL . "Current balance: " . TextColor::GREEN . "$" . number_format($balance));
         $form->addInput("Amount:", "enter a positive number...");
         $player->sendForm($form);
     }
