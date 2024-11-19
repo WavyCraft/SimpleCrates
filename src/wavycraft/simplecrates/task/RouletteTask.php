@@ -113,7 +113,7 @@ class RouletteTask extends Task {
                 if ($this->itemsLeft === 0) {
                     $this->player->removeCurrentWindow();
                     SoundUtils::getInstance()->playSound($this->player, "random.levelup");
-                    $prizeMessage = "§l§f(§a!§f)§r§f Player " . $this->player->getName() . " has won §b" . ($reward['item'])->getName() . "§f from a " . $this->crateType . " crate!";
+                    $prizeMessage = "§l§f(§a!§f)§r§f " . $this->player->getName() . " has won §b" . ($reward['item'])->getName() . "§f from a " . ucfirst($this->crateType) . " crate!";
                     Server::getInstance()->broadcastMessage($prizeMessage);
 
                     $this->sendLightning(new Position($this->cratePosition->getX(), $this->cratePosition->getY() + 1, $this->cratePosition->getZ(), $this->cratePosition->getWorld()));
