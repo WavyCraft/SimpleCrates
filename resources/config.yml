@@ -1,0 +1,115 @@
+crates:
+  common:
+    key: "tripwire_hook"
+    key_name: "§r§l§eCommon Crate Key"
+    price: 100
+    key_lore:
+      - ""
+      - "§r§l§f(§e!§f)§r§f Use this key at §e/warp crates§f to claim your prize!"
+    crate_floating_text: "§l§eCommon Crate\nTap with a key to open...\nTap without a key to preview!"
+
+  rare:
+    key: "tripwire_hook"
+    key_name: "§r§l§aRare Crate Key"
+    price: 250
+    key_lore:
+      - ""
+      - "§r§l§f(§e!§f)§r§f Use this key at §e/warp crates§f to claim your prize!"
+    crate_floating_text: "§l§aRare Crate\nTap with a key to open...\nTap without a key to preview!"
+
+  epic:
+    key: "tripwire_hook"
+    key_name: "§r§l§bEpic Crate Key"
+    price: 500
+    key_lore:
+      - ""
+      - "§r§l§f(§e!§f)§r§f Use this key at §e/warp crates§f to claim your prize!"
+    crate_floating_text: "§l§bEpic Crate\nTap with a key to open...\nTap without a key to preview!"
+
+  legendary:
+    key: "tripwire_hook"
+    key_name: "§r§l§5Legendary Crate Key"
+    price: 1000
+    key_lore:
+      - ""
+      - "§r§l§f(§e!§f)§r§f Use this key at §e/warp crates§f to claim your prize!"
+    crate_floating_text: "§l§5Legendary Crate\nTap with a key to open...\nTap without a key to preview!"
+
+prizes:
+  common:
+    - item: "diamond"
+      count: 1
+      custom_name: "§bCommon Diamond"
+      lore:
+        - "A rare prize from a common crate."
+      enchantments:
+        - type: "sharpness"
+          level: 1
+      chance: 20
+      
+    - item: "cooked_beef"
+      count: 64
+      chance: 50
+
+    - item: "ender_pearl"
+      count: 16
+      lore:
+        - "Teleport around town"
+      chance: 30
+
+  rare:
+    - item: "emerald"
+      count: 2
+      custom_name: "§eRare Emerald"
+      lore:
+        - "A precious gem from a rare crate."
+      enchantments:
+        - type: "fortune"
+          level: 2
+      chance: 50
+      
+    - item: "cooked_beef"
+      count: 64
+      chance: 50
+
+    - item: "diamond"
+      count: 64
+      chance: 30
+
+  epic:
+    - item: "netherite_ingot"
+      count: 1
+      custom_name: "§dEpic Netherite Ingot"
+      lore:
+        - "A legendary prize from an epic crate."
+      enchantments:
+        - type: "unbreaking"
+          level: 3
+      chance: 20
+      
+    - item: "cooked_beef"
+      count: 64
+      chance: 50
+
+    - item: "totem"
+      count: 1
+      chance: 30
+
+  legendary:
+    - item: "netherite_ingot"
+      count: 1
+      custom_name: "§dLegendary Netherite Ingot"
+      lore:
+        - "A legendary prize from an epic crate."
+      enchantments:
+        - type: "unbreaking"
+          level: 3
+      chance: 20
+
+    - item: "cooked_beef"
+      count: 64
+      chance: 50
+
+    - item: "totem"
+      count: 1
+      chance: 30
