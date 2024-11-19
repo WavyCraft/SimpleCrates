@@ -72,11 +72,11 @@ class EventListener implements Listener {
         }
 
         if ($crateManager->isCreatingCrate($player)) {
-            if ($block->getTypeId() === BlockTypeIds::CHEST || $block->getTypeId() === BlockTypeIds::ENDER_CHEST) {
+            if ($block->getTypeId() === BlockTypeIds::CHEST || $block->getTypeId() === BlockTypeIds::TRAPPED_CHEST || $block->getTypeId() === BlockTypeIds::ENDER_CHEST) {
                 $crateManager->finishCrateCreation($player, $blockPos);
                 $event->cancel();
                 } else {
-                $player->sendMessage(TextColor::RED . "You need to interact with a chest or ender chest to create a crate...");
+                $player->sendMessage(TextColor::RED . "You need to interact with a §echest or ender chest§c to create a crate...");
             }
             return;
         }
@@ -94,13 +94,13 @@ class EventListener implements Listener {
                         $this->cooldowns[$player->getName()] = time();
                     } else {
                         RewardManager::getInstance()->previewCrate($player, $crateType);
-                        $player->sendMessage(TextColor::YELLOW . "Previewing contents of the $crateType crate.");
+                        $player->sendMessage(TextColor::YELLOW . "Previewing contents of the " . ucfirst($crateType) . " crate...");
                         SoundUtils::getInstance()->playSound($player, "random.orb");
                     }
 
                     $event->cancel();
                 } else {
-                    $player->sendMessage(TextColor::RED . "Unknown crate type.");
+                    $player->sendMessage(TextColor::RED . "Unknown crate type...");
                 }
             }
         }
