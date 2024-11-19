@@ -65,7 +65,7 @@ class KeyShopCommand extends Command {
             $this->openBuyAmountForm($player, $selectedCrateType);
         });
 
-        $form->setTitle(TextColor::BOLD . TextColor::UNDERLINE . "Crate Key Shop");
+        $form->setTitle(TextColor::BOLD . TextColor::ITALIC . "Crate Key Shop");
         $form->setContent("Select a crate key to purchase:");
 
         foreach ($crateConfig as $crateType => $crateData) {
@@ -107,7 +107,7 @@ class KeyShopCommand extends Command {
         });
 
         $balance = (int) MoneyManager::getInstance()->getBalance($player);
-        $form->setTitle(TextColor::BOLD . TextColor::UNDERLINE . "Buy Key");
+        $form->setTitle(TextColor::BOLD . TextColor::ITALIC . "Buy Key");
         $form->addLabel("Enter the amount of keys you want to buy for crate: " . ucfirst($crateType) . TextColor::EOL . TextColor::EOL . "Price per key: " . TextColor::GREEN . "$" . number_format($pricePerKey) . TextColor::EOL . TextColor::EOL . TextColor::WHITE . "Current balance: " . TextColor::YELLOW . "$" . number_format($balance));
         $form->addInput("Amount:", "enter a positive number...");
         $player->sendForm($form);
