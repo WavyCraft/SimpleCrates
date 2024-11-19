@@ -37,7 +37,7 @@ final class KeyManager {
 
         $item->setCustomName($crateConfig[$crateType]["key_name"]);
         $item->setLore($crateConfig[$crateType]["key_lore"]);
-        $item->addEnchantment(new EnchantmentInstance(VanillaEnchantments::FORTUNE(), 3));
+        $item->addEnchantment(new EnchantmentInstance(VanillaEnchantments::MENDING(), 1));
 
         $nbt = $item->getNamedTag();
         $nbt->setTag("Key", new StringTag($crateType));
