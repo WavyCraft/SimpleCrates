@@ -33,9 +33,9 @@ class KeyAllCommand extends Command {
         $amount = isset($args[1]) && is_numeric($args[1]) ? max(1, (int)$args[1]) : 1;
         KeyManager::getInstance()->giveCrateKeyAll($crateType, $amount);
 
-        $sender->sendMessage("§l§f(§a!§f)§r§f You have given §a" . number_format($amount) . ucfirst($crateType) . " crate keys §fto everyone on the server!");
+        $sender->sendMessage("§l§f(§a!§f)§r§f You have given §a" . number_format($amount) . " " . ucfirst($crateType) . " crate keys §fto everyone on the server!");
 
-        Server::getInstance()->broadcastMessage("§f[§bSimpleCrates§f] Everyone has been given §a" . number_format($amount) . ucfirst($crateType) . " crate keys §f by §e" . $sender->getName() . "§f!");
+        Server::getInstance()->broadcastMessage("§f[§bSimpleCrates§f] Everyone has been given §a" . number_format($amount) . " " . ucfirst($crateType) . " crate keys §f by §e" . $sender->getName() . "§f!");
         return true;
     }
 }
