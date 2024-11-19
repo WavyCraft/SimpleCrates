@@ -14,6 +14,8 @@ use wavycraft\simplecrates\commands\RemoveCrateCommand;
 
 use wavycraft\simplecrates\utils\FloatingText;
 
+use muqsit\invmenu\InvMenuHandler;
+
 final class Loader extends PluginBase {
 
     protected static $instance;
@@ -34,6 +36,10 @@ final class Loader extends PluginBase {
             new CreateCrateCommand(),
             new RemoveCrateCommand()
         ]);
+
+        if (!InvMenuHandler::isRegistered()) {
+            InvMenuHandler::register($this);
+        }
     }
 
     protected function onDisable() : void{
