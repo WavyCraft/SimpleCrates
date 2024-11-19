@@ -27,7 +27,7 @@ final class CrateManager {
     private $removingCrate = [];
     private $lavaParticleTasks = [];
 
-    public function isCrateBlock(Block $block) : bool {
+    public function isCrateBlock(Block $block) : bool{
         $crateConfig = new Config(Loader::getInstance()->getDataFolder() . "crate_locations.json", Config::JSON);
 
         foreach ($crateConfig->getAll() as $coordinates) {
@@ -62,7 +62,7 @@ final class CrateManager {
         return null;
     }
 
-    public function getCrateTypeByPosition(Position $position): ?string {
+    public function getCrateTypeByPosition(Position $position) : ?string{
         $crateConfig = new Config(Loader::getInstance()->getDataFolder() . "crate_locations.json", Config::JSON);
     
         foreach ($crateConfig->getAll() as $crateType => $coordinates) {
@@ -104,17 +104,17 @@ final class CrateManager {
             $cratePosition = $this->getCratePositionByType($crateType);
 
             if ($cratePosition === null) {
-                $player->sendMessage(TextColor::RED . "Crate location not found for $crateType.");
+                $player->sendMessage(TextColor::RED . "Crate location not found for " . $crateType . "...");
                 return;
             }
 
             $task = new RouletteTask($player, $cratePosition, $crateType);
             Loader::getInstance()->getScheduler()->scheduleRepeatingTask($task, 1);
 
-            $player->sendMessage("You opened a $crateType crate!");
+            $player->sendMessage("You opened a " . ucfirst($crateType) . " crate!");
             SoundUtils::getInstance()->playSound($player, "random.levelup");
         } else {
-            $player->sendMessage(TextColor::RED . "You need a $crateType key to open this crate.");
+            $player->sendMessage(TextColor::RED . "You need a " . ucfirst($crateType) . " key to open this crate...");
         }
     }
 
@@ -123,15 +123,15 @@ final class CrateManager {
         $crateKeys = $crateConfig->get("crates", []);
 
         if (!isset($crateKeys[$type])) {
-            $player->sendMessage(TextColor::RED . "Crate type '$type' does not exist!");
+            $player->sendMessage(TextColor::RED . "Crate type $type does not exist!");
             return;
         }
 
         $this->creatingCrate[$player->getName()] = $type;
-        $player->sendMessage(TextColor::GREEN . "Right-click or left-click a chest block to create a " . ucfirst($type) . " crate.");
+        $player->sendMessage(TextColor::GREEN . "Right-click or left-click a chest or ender chest block to create a " . ucfirst($type) . " crate...");
     }
 
-    public function isCreatingCrate(Player $player): bool {
+    public function isCreatingCrate(Player $player) : bool{
         return isset($this->creatingCrate[$player->getName()]);
     }
 
@@ -144,7 +144,7 @@ final class CrateManager {
 
         $crateConfig = Loader::getInstance()->getConfig();
         $crateKeys = $crateConfig->get("crates", []);
-        $floatingText = $crateKeys[$crateType]["crate_floating_text"] ?? "§l§e" . ucfirst($crateType) . " Crate\nYou need a key to open!";
+        $floatingText = $crateKeys[$crateType]["crate_floating_text"];
 
         $crateLocations = new Config(Loader::getInstance()->getDataFolder() . "crate_locations.json", Config::JSON);
         $crateLocations->set($crateType . "_crate", [
@@ -167,7 +167,7 @@ final class CrateManager {
         SoundUtils::getInstance()->playSound($player, "random.pop");
     }
 
-    public function isValidCrateType(string $type): bool {
+    public function isValidCrateType(string $type) : bool{
         $crateConfig = Loader::getInstance()->getConfig();
         $crateKeys = $crateConfig->get("crates", []);
         return isset($crateKeys[$type]);
@@ -175,10 +175,10 @@ final class CrateManager {
 
     public function startCrateRemoval(Player $player, string $type) {
         $this->removingCrate[$player->getName()] = $type;
-        $player->sendMessage(TextColor::GREEN . "Crate removal mode enabled for $type crate. Interact with a crate to remove it.");
+        $player->sendMessage(TextColor::GREEN . "Crate removal mode enabled for " . ucfirst($type) . " crate, Interact with a crate to remove it...");
     }
 
-    public function isRemovingCrate(Player $player): bool {
+    public function isRemovingCrate(Player $player) : bool{
         return isset($this->removingCrate[$player->getName()]);
     }
 
@@ -204,7 +204,7 @@ final class CrateManager {
             $player->sendMessage(TextColor::GREEN . ucfirst($crateType) . " crate removed successfully!");
             $this->finishCrateRemoval($player);
         } else {
-            $player->sendMessage(TextColor::RED . "Thats not a $crateType crate!");
+            $player->sendMessage(TextColor::RED . "Thats not a " . ucfirst($crateType) . " crate!");
         }
     }
     
