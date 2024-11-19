@@ -114,8 +114,8 @@ final class RewardManager {
                 TextColor::RESET . "Chance: " . $chancePercentage . "%"
             ]);
 
-            if (isset($randomPrize["enchantments"]) && is_array($randomPrize["enchantments"])) {
-                foreach ($randomPrize["enchantments"] as $enchantData) {
+            if (isset($crateItem["enchantments"]) && is_array($crateItem["enchantments"])) {
+                foreach ($crateItem["enchantments"] as $enchantData) {
                     $enchant = StringToEnchantmentParser::getInstance()->parse($enchantData["type"]);
                     $level = (int) ($enchantData["level"] ?? 1);
                     if ($enchant !== null) {
