@@ -17,8 +17,8 @@ use wavycraft\simplecrates\utils\KeyManager;
 
 use wavycraft\core\economy\MoneyManager;
 
-use wavycraft\core\form\SimpleForm;
-use wavycraft\core\form\CustomForm;
+use core\form\SimpleForm;
+use core\form\CustomForm;
 
 class KeyShopCommand extends Command {
     
