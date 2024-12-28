@@ -18,7 +18,7 @@ use wavycraft\simplecrates\Loader;
 
 use wavycraft\simplecrates\task\RouletteTask;
 
-use wavycraft\core\utils\SoundUtils;
+use core\utils\SoundUtils;
 
 final class CrateManager {
     use SingletonTrait;
