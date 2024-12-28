@@ -29,7 +29,7 @@ use pocketmine\utils\TextFormat;
 
 use wavycraft\simplecrates\utils\RewardManager;
 
-use wavycraft\core\utils\SoundUtils;
+use core\utils\SoundUtils;
 
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\type\InvMenuTypeIds;
