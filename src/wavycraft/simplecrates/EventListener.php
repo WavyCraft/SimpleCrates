@@ -27,7 +27,7 @@ use wavycraft\simplecrates\utils\FloatingText;
 use wavycraft\simplecrates\utils\CrateManager;
 use wavycraft\simplecrates\utils\RewardManager;
 
-use wavycraft\core\utils\SoundUtils;
+use core\utils\SoundUtils;
 
 class EventListener implements Listener {
     use SingletonTrait;
